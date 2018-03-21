@@ -1,24 +1,20 @@
-# README
+Messenger Application
+================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To run this app locally, you'll need to have Ruby and Ruby on Rails installed.
 
-Things you may want to cover:
+Clone this repo, install the dependencies and run a database migration:
 
-* Ruby version
+```
+$ git clone https://github.com/ashleigh090990/messenger-app-with-ruby-on-rails.git
+$ bundle install
+$ rake db:migrate
+```
 
-* System dependencies
+To run the app:
 
-* Configuration
+```
+$ rails s
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Go to localhost:3000 (or where the logs say it's running)
