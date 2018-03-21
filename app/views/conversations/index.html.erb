@@ -14,22 +14,33 @@
 <h1>My Inbox</h1>
 <div class="panel panel-default">
 	<div class="col-lg-6">
-	  <div id="mail" class="collapse">
+	  <div id="mail" class="">
 	    <h1 class="panel-heading">All Conversations:</h1>
 	    <div class="panel-body">
 	     <div class="item">
-	      
+	      <% @conversations.each do |conversation| %>
+		      <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+		       <% if conversation.sender_id == current_user.id %>
+		         <% recipient = User.find(conversation.recipient_id) %>
+		       <% else %>
+		         <% recipient = User.find(conversation.sender_id) %>
+		       <% end %>
+		       <h3><%= link_to recipient.email, conversation_messages_path(conversation)%></h3>
+		      <% end %>
+		     <% end %>
 	     </div>
 	    </div>
 	   </div>
-	  <div id="new" class="collapse">
+	  <div id="new" class="">
 	    <div class="panel-body">
 	     <h1 class="panel-heading">All Users:</h1>
 	       <% @users.each do |user| %>
 	        <% if user.id != current_user.id %>
-	         <div class="item"><h3>
-	      
-	     </h3></div>
+	         <div class="item">
+	         	<h3>
+	         		<%= link_to user.email, conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%>
+	     			</h3>
+	     		</div>
 	      <% end %>
 	     <% end %>
 	    </div>
